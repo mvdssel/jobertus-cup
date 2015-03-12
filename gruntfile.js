@@ -9,8 +9,8 @@ module.exports = function(grunt) {
 
         // Variable configuration
         app: {
-            js: ['app/assets/javascript'],
-            scss: ['app/assets/scss'],
+            js: ['app/javascript'],
+            scss: ['app/scss'],
         },
         build: {
             js: ['build/javascript'],
@@ -25,11 +25,6 @@ module.exports = function(grunt) {
         bower_concat: {
             all: {
                 dest: '<%= build.js %>/bower.js',
-                // cssDest: '<%= build.css%>/bower.css',
-                // exclude: [
-                // 'jquery',
-                // 'modernizr'
-                // ],
                 dependencies: {
                     'bootstrap-sass-official': 'jquery',
                     'underscore': 'jquery',
@@ -40,17 +35,17 @@ module.exports = function(grunt) {
         concat: {
             options: {
                 separator: ';',
-                nonull: true,
             },
             app: {
+                nonull: true,
                 src: [
                     '<%= app.js %>/utilities.js',
                     '<%= app.js %>/settings.js',
                     '<%= app.js %>/templates.js',
-                    '<%= app.js %>/Models/{,*/}*.js',
-                    '<%= app.js %>/Collections/{,*/}*.js',
-                    '<%= app.js %>/Views/{,*/}*.js',
-                    '<%= app.js %>/Router/{,*/}*.js',
+                    '<%= app.js %>/Models/*.js',
+                    '<%= app.js %>/Collections/*.js',
+                    '<%= app.js %>/Views/*.js',
+                    '<%= app.js %>/Router/*.js',
                     '<%= app.js %>/app.js',
                 ],
                 dest: '<%= build.js %>/script.js'
@@ -77,11 +72,11 @@ module.exports = function(grunt) {
         watch: {
             concat: {
                 files: [
-                    '<%= app.js %>/{,*/}*.js',
-                    '<%= app.js %>/Models/{,*/}*.js',
-                    '<%= app.js %>/Collections/{,*/}*.js',
-                    '<%= app.js %>/Views/{,*/}*.js',
-                    '<%= app.js %>/Router/{,*/}*.js',
+                    '<%= app.js %>/*.js',
+                    '<%= app.js %>/Models/*.js',
+                    '<%= app.js %>/Collections/*.js',
+                    '<%= app.js %>/Views/*.js',
+                    '<%= app.js %>/Router/*.js',
                 ],
                 tasks: ['concat:app', 'concat:build']
             },
