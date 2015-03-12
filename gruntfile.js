@@ -76,7 +76,13 @@ module.exports = function(grunt) {
         // },
         watch: {
             concat: {
-                files: '<%= app.js %>/{,*/}*.js',
+                files: [
+                    '<%= app.js %>/{,*/}*.js',
+                    '<%= app.js %>/Models/{,*/}*.js',
+                    '<%= app.js %>/Collections/{,*/}*.js',
+                    '<%= app.js %>/Views/{,*/}*.js',
+                    '<%= app.js %>/Router/{,*/}*.js',
+                ],
                 tasks: ['concat:app', 'concat:build']
             },
             sass: {

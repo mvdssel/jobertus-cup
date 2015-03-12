@@ -1,8 +1,8 @@
 /*global App*/
-App.Collections.Takken = Backbone.Collection.extend({
-    model: App.Models.Tak, 
+App.Collections.Ploegen = Backbone.Collection.extend({
+    model: App.Models.Ploeg, 
     initialize: function(models, options) {
-        var html5_audio = new Audio("file://Users/maartenvandessel/Sites/cup/sound/html5-audio-example-mp3.mp3");
+        var html5_audio = new Audio("file:///Users/maartenvandessel/Sites/cup/dist/sound/html5-audio-example-mp3.mp3");
         html5_audio.play();
 
         var a = $.getJSON("sound/sounds.json").done(function(data) {
