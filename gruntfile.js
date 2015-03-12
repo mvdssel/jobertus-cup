@@ -1,4 +1,5 @@
-'use strict';
+/*globals module */
+"use strict";
 
 // Gruntfile
 module.exports = function(grunt) {
@@ -10,23 +11,24 @@ module.exports = function(grunt) {
         // Variable configuration
         app: {
             js: ['app/javascript'],
-            scss: ['app/scss'],
+            style: ['app/scss'],
         },
         build: {
             js: ['build/javascript'],
-            css: ['build/css'],
+            style: ['build/css'],
         },
         dist: {
             js: ['dist/javascript'],
-            css: ['dist/css'],
+            style: ['dist/css'],
         },
 
         // Task configuration
         bower_concat: {
             all: {
                 dest: '<%= build.js %>/bower.js',
+                cssDest: '<%= build.style %>/bower.css',
                 dependencies: {
-                    'bootstrap-sass-official': 'jquery',
+                    'bootstrap': 'jquery',
                     'underscore': 'jquery',
                     'backbone': 'underscore',
                 },
@@ -53,16 +55,21 @@ module.exports = function(grunt) {
             build: {
                 src: ['<%= build.js %>/bower.js', '<%= build.js %>/script.js'],
                 dest: '<%= dist.js %>/<%= pkg.name %>-<%= pkg.version %>.js'
+            },
+            build_css: {
+                src: ['<%= build.style %>/bower.css', '<%= build.style %>/style.css'],
+                dest: '<%= dist.js %>/<%= pkg.name %>-<%= pkg.version %>.js'
             }
         },
         sass: { // https://github.com/gruntjs/grunt-contrib-sass
             app: {
                 options: {
-                    style: 'expanded',
-                    compass: false
+                    style: 'expanded',    // nested, compact, compressed, expanded
+                    sourcemap: "none",      // auto, file, inline, none
+                    compass: false          // = default
                 },
                 files: {
-                    '<%= dist.css %>/style.css': '<%= app.scss %>/base.scss'
+                    '<%= build.style %>/style.css': '<%= app.style %>/base.scss'
                 }
             }
         },
@@ -78,7 +85,7 @@ module.exports = function(grunt) {
                     '<%= app.js %>/Views/*.js',
                     '<%= app.js %>/Router/*.js',
                 ],
-                tasks: ['concat:app', 'concat:build']
+                tasks: ['concat:app']
             },
             sass: {
                 files: '<%= app.scss %>/{,*/}*.{scss,sass}',
@@ -97,5 +104,7 @@ module.exports = function(grunt) {
     // Task definition
     grunt.registerTask('default', ['watch']);
     grunt.registerTask('bower', ['bower_concat']);
+    grunt.registerTask('dist', ['concat:build', 'concat:build_css']);
+    grunt.registerTask('all', ['bower_concat', 'sass', 'concat:app', 'concat:build', 'concat:build_css']);
 };
 

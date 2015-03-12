@@ -1,0 +1,22 @@
+{
+    "options": {
+        "prefixes": {
+            "image": "assets/images/",
+            "song": "assets/songs/"
+        }
+    },
+    "ploegen": [
+    {
+        "name": "vergi's",
+        "song": "zot liedje.mp3",
+        "image": "vergi's.jpg",
+        "poule": "1"
+    },
+    {
+        "name": "loebassen",
+        "song": "zot liedje.mp3",
+        "image": "daarm in de faarm.jpg",
+        "poule": "1"
+    }
+    ]
+}
