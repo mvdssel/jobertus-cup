@@ -5,8 +5,7 @@ App.Models.Timer = Backbone.Model.extend({
     },
     start: function() {
         if(!this.get('interval')) {
-            var now = new Date();
-            var startTime = now - this.get('currentTime');
+            var startTime = _.now() - this.get('currentTime');
             this.set('startTime', startTime);
             this.setInterval();
         }
@@ -15,7 +14,7 @@ App.Models.Timer = Backbone.Model.extend({
         this.clearInterval();
     },
     reset: function() {
-        var now = new Date();
+        var now = _.now();
         this.set('startTime', now);
         this.set('currentTime', now - now);
     },
@@ -35,8 +34,7 @@ App.Models.Timer = Backbone.Model.extend({
         this.set('interval', false);
     },
     tick: function() {
-        var now = new Date();
-        var diff = now - this.get('startTime');
+        var diff = _.now() - this.get('startTime');
         this.set('currentTime', diff);
     }
 });
