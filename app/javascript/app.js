@@ -1,12 +1,6 @@
-// var app = new App.Views.App();
-// app.render();
+App.Settings.ploegen = window.PloegFactory.createPloegen();
 
-// var ploegen = new App.Collections.Ploegen();
-// var ploegenView = new App.Views.Ploegen({collection: ploegen});
-// ploegenView.render();
-
-var ploegen = window.PloegFactory.createPloegen();
-evtUtil.on("init", function() {
-    console.log(ploegen.toJSON());
+evtUtil.on('init', function() {
+    App.Router = new App.Router();
+    Backbone.history.start();
 });
-

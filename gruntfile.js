@@ -1,6 +1,3 @@
-/*globals module */
-"use strict";
-
 // Gruntfile
 module.exports = function(grunt) {
 
@@ -10,14 +7,17 @@ module.exports = function(grunt) {
 
         // Variable configuration
         app: {
+            base: ['app'],
             js: ['app/javascript'],
             style: ['app/scss'],
         },
         build: {
+            base: ['build'],
             js: ['build/javascript'],
             style: ['build/css'],
         },
         dist: {
+            base: ['dist'],
             js: ['dist/javascript'],
             style: ['dist/css'],
         },
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
             options: {
                 separator: ';',
             },
-            app: {
+            app_js: {
                 nonull: true,
                 src: [
                     '<%= app.js %>/utilities.js',
@@ -52,9 +52,17 @@ module.exports = function(grunt) {
                 ],
                 dest: '<%= build.js %>/script.js'
             },
-            build: {
+            app_html: {
+                src: '<%= app.base %>/index.html',
+                dest: '<%= build.base %>/index.html'
+            },
+            build_js: {
                 src: ['<%= build.js %>/bower.js', '<%= build.js %>/script.js'],
                 dest: '<%= dist.js %>/<%= pkg.name %>-<%= pkg.version %>.js'
+            },
+            build_html: {
+                src: '<%= build.base %>/index.html',
+                dest: '<%= dist.base %>/index.html'
             },
             build_css: {
                 src: ['<%= build.style %>/bower.css', '<%= build.style %>/style.css'],
@@ -65,7 +73,7 @@ module.exports = function(grunt) {
             app: {
                 options: {
                     style: 'expanded',    // nested, compact, compressed, expanded
-                    sourcemap: "none",      // auto, file, inline, none
+                    sourcemap: "inline",      // auto, file, inline, none
                     compass: false          // = default
                 },
                 files: {
@@ -77,7 +85,11 @@ module.exports = function(grunt) {
         //     //...
         // },
         watch: {
-            concat: {
+            concat_html: {
+                files: ['<%= app.base %>/*.html'],
+                tasks: ['concat:app_html']
+            },
+            concat_js: {
                 files: [
                     '<%= app.js %>/*.js',
                     '<%= app.js %>/Models/*.js',
@@ -85,10 +97,10 @@ module.exports = function(grunt) {
                     '<%= app.js %>/Views/*.js',
                     '<%= app.js %>/Router/*.js',
                 ],
-                tasks: ['concat:app']
+                tasks: ['concat:app_js']
             },
             sass: {
-                files: '<%= app.scss %>/{,*/}*.{scss,sass}',
+                files: '<%= app.style %>/{,*/}*.{scss,sass}',
                 tasks: ['sass:app']
             }
         }
@@ -104,7 +116,11 @@ module.exports = function(grunt) {
     // Task definition
     grunt.registerTask('default', ['watch']);
     grunt.registerTask('bower', ['bower_concat']);
-    grunt.registerTask('dist', ['concat:build', 'concat:build_css']);
-    grunt.registerTask('all', ['bower_concat', 'sass', 'concat:app', 'concat:build', 'concat:build_css']);
+    grunt.registerTask('dist', ['concat:build_js', 'concat:build_html', 'concat:build_css']);
+    grunt.registerTask('all', [
+        'bower_concat',
+        'sass', 'concat:app_js', 'concat:app_html',
+        'concat:build_js', 'concat:build_html', 'concat:build_css'
+    ]);
 };
 

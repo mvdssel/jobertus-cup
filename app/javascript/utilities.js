@@ -15,7 +15,7 @@ window.PloegFactory = {
         $.getJSON(App.Settings.ploegData).done(function(data) {
             var options = data.options || {};
             for (var i in data.ploegen) {
-                var ploeg = new App.Models.Ploeg(data.ploegen[i], data.options);
+                var ploeg = new App.Models.Ploeg(data.ploegen[i], options);
                 ploegen.add(ploeg);
             }
 
