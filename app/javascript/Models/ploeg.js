@@ -16,6 +16,10 @@ App.Models.Ploeg = Backbone.Model.extend({
     playSound: function() {
         var html5_audio = new Audio(this.get("song"));
         html5_audio.play();
+    },
+    defaults: {
+        image: 'images/logo.png',
+        song: 'zot_liedje.mp3'
     }
 });
 

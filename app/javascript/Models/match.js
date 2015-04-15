@@ -17,5 +17,3 @@ App.Models.Match = Backbone.Model.extend({
         }, this));
     }
 });
-
-

@@ -3,8 +3,8 @@ App.Views.MatchPloeg = Backbone.View.extend({
         this.model.on('change', this.render, this);
     },
     events: {
-        'click .btn-score': 'score',
-        'click .btn-fault': 'fault'
+        'click [data-role=score]': 'score',
+        'click [data-role=fault]': 'fault'
     },
     tagName: 'div',
     className: 'col-sm-6 col-md-6',

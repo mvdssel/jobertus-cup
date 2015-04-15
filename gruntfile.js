@@ -10,16 +10,25 @@ module.exports = function(grunt) {
             base: ['app'],
             js: ['app/javascript'],
             style: ['app/scss'],
+            fonts: ['app/bower_components/bootstrap/fonts'],
+            images: ['app/images'],
+            assets: ['app/assets'],
         },
         build: {
             base: ['build'],
             js: ['build/javascript'],
             style: ['build/css'],
+            fonts: ['build/fonts'],
+            images: ['build/images'],
+            assets: ['build/assets'],
         },
         dist: {
             base: ['dist'],
             js: ['dist/javascript'],
             style: ['dist/css'],
+            fonts: ['dist/fonts'],
+            images: ['dist/images'],
+            assets: ['dist/assets'],
         },
 
         // Task configuration
@@ -52,21 +61,13 @@ module.exports = function(grunt) {
                 ],
                 dest: '<%= build.js %>/script.js'
             },
-            app_html: {
-                src: '<%= app.base %>/index.html',
-                dest: '<%= build.base %>/index.html'
-            },
             build_js: {
                 src: ['<%= build.js %>/bower.js', '<%= build.js %>/script.js'],
                 dest: '<%= dist.js %>/<%= pkg.name %>-<%= pkg.version %>.js'
             },
-            build_html: {
-                src: '<%= build.base %>/index.html',
-                dest: '<%= dist.base %>/index.html'
-            },
             build_css: {
                 src: ['<%= build.style %>/bower.css', '<%= build.style %>/style.css'],
-                dest: '<%= dist.js %>/<%= pkg.name %>-<%= pkg.version %>.js'
+                dest: '<%= dist.css %>/<%= pkg.name %>-<%= pkg.version %>.js'
             }
         },
         sass: { // https://github.com/gruntjs/grunt-contrib-sass
@@ -87,7 +88,7 @@ module.exports = function(grunt) {
         watch: {
             concat_html: {
                 files: ['<%= app.base %>/*.html'],
-                tasks: ['concat:app_html']
+                tasks: ['copy:app_html']
             },
             concat_js: {
                 files: [
@@ -103,6 +104,16 @@ module.exports = function(grunt) {
                 files: '<%= app.style %>/{,*/}*.{scss,sass}',
                 tasks: ['sass:app']
             }
+        },
+        copy: {
+            app_html:     {expand: true, cwd: '<%= app.base %>/',     src: '*.html', dest: '<%= build.base %>/'},
+            app_fonts:    {expand: true, cwd: '<%= app.fonts %>/',    src: '**/*',   dest: '<%= build.fonts %>/'},
+            app_images:   {expand: true, cwd: '<%= app.images %>/',   src: '**/*',   dest: '<%= build.images %>/'},
+            app_assets:   {expand: true, cwd: '<%= app.assets %>/',   src: '**/*',   dest: '<%= build.assets %>/'},
+            build_html:   {expand: true, cwd: '<%= build.base %>/',   src: '*.html', dest: '<%= dist.base %>/'},
+            build_fonts:  {expand: true, cwd: '<%= build.fonts %>/',  src: '**/*',   dest: '<%= dist.fonts %>/'},
+            build_images: {expand: true, cwd: '<%= build.images %>/', src: '**/*',   dest: '<%= dist.images %>/'},
+            build_assets: {expand: true, cwd: '<%= build.assets %>/', src: '**/*',   dest: '<%= dist.assets %>/'},
         }
     });
 
@@ -112,15 +123,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     // Task definition
     grunt.registerTask('default', ['watch']);
-    grunt.registerTask('bower', ['bower_concat']);
-    grunt.registerTask('dist', ['concat:build_js', 'concat:build_html', 'concat:build_css']);
     grunt.registerTask('all', [
         'bower_concat',
-        'sass', 'concat:app_js', 'concat:app_html',
-        'concat:build_js', 'concat:build_html', 'concat:build_css'
+        'copy:app_assets', 'copy:app_images', 'copy:app_html', 'concat:app_js', 'sass', 'copy:app_fonts',
+        'copy:build_assets', 'copy:build_images', 'copy:build_html', 'concat:build_js', 'concat:build_css', 'copy:build_fonts'
     ]);
 };
 

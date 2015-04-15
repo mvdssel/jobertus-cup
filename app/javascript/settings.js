@@ -1,4 +1,6 @@
-/* global App, evtUtil */
 App.Settings = {
-    ploegData: "assets/ploegen.json"
+    brand: 'Jobertus Cup',
+    ploegData: 'assets/ploegen.json',
+    app: $('#app'),
+    modal: $('#modal')
 };

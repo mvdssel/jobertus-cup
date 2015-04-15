@@ -7,100 +7,54 @@
     },
     "ploegen": [
         {
-            "name": "el foco",
-            "song": "zot liedje.mp3",
-            "image": "vergi's.jpg",
-            "poule": "1"
-        },
-        {
-            "name": "team triftshop",
-            "song": "zot liedje.mp3",
-            "image": "daarm in de faarm.jpg",
-            "poule": "1"
-        },
-        {
-            "name": "the old stars**",
-            "song": "zot liedje.mp3",
-            "image": "vergi's.jpg",
-            "poule": "1"
-        },
-        {
-            "name": "team hoef",
-            "song": "zot liedje.mp3",
-            "image": "daarm in de faarm.jpg",
-            "poule": "1"
-        },
-        {
-            "name": "hangover 69",
-            "song": "zot liedje.mp3",
-            "image": "vergi's.jpg",
-            "poule": "2"
-        },
-        {
-            "name": "street art",
-            "song": "zot liedje.mp3",
-            "image": "daarm in de faarm.jpg",
-            "poule": "2"
-        },
-        {
-            "name": "holy shit, no nonsense",
-            "song": "zot liedje.mp3",
-            "image": "vergi's.jpg",
-            "poule": "2"
-        },
-        {
-            "name": "backstreetgay’s",
-            "song": "zot liedje.mp3",
-            "image": "daarm in de faarm.jpg",
-            "poule": "2"
-        },
-        {
-            "name": "Desperate Houseknives",
-            "song": "zot liedje.mp3",
-            "image": "vergi's.jpg",
-            "poule": "3"
-        },
-        {
-            "name": "team triftshop",
-            "song": "zot liedje.mp3",
-            "image": "daarm in de faarm.jpg",
-            "poule": "3"
-        },
-        {
-            "name": "the old stars**",
-            "song": "zot liedje.mp3",
-            "image": "vergi's.jpg",
-            "poule": "3"
-        },
-        {
-            "name": "Brak Attack",
-            "song": "zot liedje.mp3",
-            "image": "daarm in de faarm.jpg",
-            "poule": "3"
-        },
-        {
-            "name": "Ultimate Tasty",
-            "song": "zot liedje.mp3",
-            "image": "vergi's.jpg",
-            "poule": "4"
-        },
-        {
-            "name": "Forza Vergi",
-            "song": "zot liedje.mp3",
-            "image": "daarm in de faarm.jpg",
-            "poule": "4"
+            "name": "Real Jaak",
+            "song": "",
+            "image": ""
         },
         {
             "name": "FC Barrylona",
-            "song": "zot liedje.mp3",
-            "image": "vergi's.jpg",
-            "poule": "4"
+            "song": "",
+            "image": ""
         },
         {
-            "name": "FC Lentethee",
-            "song": "zot liedje.mp3",
-            "image": "daarm in de faarm.jpg",
-            "poule": "4"
+            "name": "Verenigde Maïs",
+            "song": "",
+            "image": ""
+        },
+        {
+            "name": "Jin-Ploeg",
+            "song": "jins.mp3",
+            "image": ""
+        },
+        {
+            "name": "The Pathfinders",
+            "song": "",
+            "image": ""
+        },
+        {
+            "name": "FC Willem enal",
+            "song": "",
+            "image": ""
+        },
+        {
+            "name": "Matthi's Bitches",
+            "song": "",
+            "image": ""
+        },
+        {
+            "name": "Sneeuwbitchke en zijn dwergen",
+            "song": "sneeuwbitchke.mp3",
+            "image": ""
+        },
+        {
+            "name": "El Foco",
+            "song": "el-foco.wav",
+            "image": ""
+        },
+        {
+            "name": "FC",
+            "song": "fc.mp3",
+            "image": ""
         }
     ]
 }

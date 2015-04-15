@@ -4,7 +4,8 @@ App.Views.Match = Backbone.View.extend({
     template: App.Templates.Match,
     render: function() {
         // Render the template
-        this.$el.html(this.template());
+        var html = this.template(this.ploegen.pluck('score'));
+        this.$el.html(html);
 
         // Render the teams
         this.model.ploegen.each(_.bind(function(ploeg) {
