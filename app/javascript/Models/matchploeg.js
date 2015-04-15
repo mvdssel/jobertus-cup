@@ -12,7 +12,7 @@ App.Models.MatchPloeg = Backbone.Model.extend({
         score: 0
     },
     fault: function() {
-        var newScore = this.get('score') - 1;
+        var newScore = Math.max(this.get('score') - 1, 0);
         this.set('score', newScore);
     },
     score: function() {

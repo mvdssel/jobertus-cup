@@ -1,13 +1,12 @@
 App.Views.MatchPloeg = Backbone.View.extend({
     initialize: function(options) {
-        this.model.on('change', this.render, this);
     },
     events: {
         'click [data-role=score]': 'score',
         'click [data-role=fault]': 'fault'
     },
     tagName: 'div',
-    className: 'col-sm-6 col-md-6',
+    className: 'col-xs-6 col-sm-6 col-md-6 col-lg-6',
     template: App.Templates.MatchPloeg,
     render: function() {
         // Render the ploeg

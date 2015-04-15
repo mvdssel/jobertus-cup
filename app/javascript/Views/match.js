@@ -1,11 +1,13 @@
 App.Views.Match = Backbone.View.extend({
+    initialize: function(options) {
+        this.model.ploegen.on('change', this.renderScores, this);
+    },
     tagName: 'div',
     className: 'row',
     template: App.Templates.Match,
     render: function() {
-        // Render the template
-        var html = this.template(this.ploegen.pluck('score'));
-        this.$el.html(html);
+        // Render the scores
+        this.renderScores();
 
         // Render the teams
         this.model.ploegen.each(_.bind(function(ploeg) {
@@ -14,6 +16,11 @@ App.Views.Match = Backbone.View.extend({
         }, this));
 
         return this;
+    },
+    renderScores: function() {
+        this.$('.scores').remove();
+        var html = App.Templates.Scores({ scores: this.model.ploegen.pluck('score') });
+        this.$el.prepend(html);
     }
 });
 

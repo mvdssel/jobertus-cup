@@ -3,6 +3,8 @@ App.Views.Timer = Backbone.View.extend({
         this.model.on('change:currentTime', this.renderTimerValue, this);
         this.model.on('change:interval', this.renderTimerControls, this);
     },
+    tagName: 'div',
+    className: 'nav navbar-nav navbar-right',
     events: {
         'click [data-role=reset]': 'reset',
         'click [data-role=toggle]': 'toggle'

@@ -7,7 +7,10 @@ App.Views.PloegenChooser = Backbone.View.extend({
     render: function() {
         // Render the template
         this.$el.html(this.template());
-        this.$(".modal").modal('show');
+        this.$('.modal').modal('show');
+        this.$('.modal').on('hide.bs.modal', function() {
+            history.go(-1);
+        });
 
         return this;
     },
@@ -19,7 +22,8 @@ App.Views.PloegenChooser = Backbone.View.extend({
             this.selectRight(_.bind(this.selectedRight, this));
             // Call the callback function if all ploegen are chosen
             this.once('selected-right', _.bind(function() {
-                this.$(".modal").modal('hide');
+                this.$('.modal').off('hide.bs.modal');
+                this.$('.modal').modal('hide');
                 var selectedPloegen = new App.Collections.Ploegen([this.left, this.right]);
                 _.bind(callback, context, selectedPloegen)();
             }, this));

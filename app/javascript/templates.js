@@ -38,6 +38,9 @@ template.fn.formatTimer = function (time) {
 
     return twoDigitNumber(mins) + ':' + twoDigitNumber(seconds) + ':' + twoDigitNumber(time);
 };
+template.fn.formatScores = function (scores) {
+    return scores[0] + '—' + scores[1];
+};
 template.fn.timerClass = function (interval) {
     return interval ? 'glyphicon-pause' : 'glyphicon-play';
 };
@@ -59,45 +62,41 @@ window.App.Templates = {
             '</button>',
         '</div>'
     ],
-    Match: [
-        '<div class="scores">{{ scoreLeft }} — {{ scoreRight }}</div>',
+    Scores: [
+        '<div class="scores">{{ formatScores(scores) }}</div>',
     ],
     MatchPloeg: [
-        '<h3>{{ ploeg.name }}</h3>',
-        '<div class="btn-group">',
-            '<button data-role="score" class="btn btn-success">Score!</button>',
-            '<button data-role="fault" class="btn btn-default">',
-                '<span class="glyphicon glyphicon-remove-circle"></span>',
-            '</button>',
+        '<div class="ploeg">',
+            '<h3>{{ ploeg.name }}</h3>',
+            '<div class="btn-group">',
+                '<button data-role="score" class="btn btn-success">Score!</button>',
+                '<button data-role="fault" class="btn btn-default">',
+                    '<span class="glyphicon glyphicon-remove-circle"></span>',
+                '</button>',
+            '</div>',
         '</div>',
     ],
     Navbar: [
-        '<nav class="navbar navbar-default navbar-static-top">',
+        '<nav class="navbar navbar-default">',
             '<div class="container-fluid">',
-                '<!-- Brand and toggle get grouped for better mobile display -->',
                 '<div class="navbar-header">',
-                    '<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">',
+                    '<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">',
                         '<span class="sr-only">Toggle navigation</span>',
                         '<span class="icon-bar"></span>',
                         '<span class="icon-bar"></span>',
                         '<span class="icon-bar"></span>',
                     '</button>',
-                    '<a class="navbar-brand pull-left" href="#">',
+                    '<div class="pull-left navbar-brand">',
                         '<img src="images/logo.png" alt="{{ App.Settings.brand }}">',
-                    '</a>',
-                    '<a class="navbar-brand" href="#">',
+                    '</div>',
+                    '<div class="navbar-brand">',
                         '{{ App.Settings.brand }}',
-                    '</a>',
+                    '</div>',
                 '</div>',
 
-                '<!-- Collect the nav links, forms, and other content for toggling -->',
-                '<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">',
-                    '<ul id="navbar-left" class="nav navbar-nav">',
-
-                    '</ul>',
-
-                    '<ul id="navbar-right" class="nav navbar-nav navbar-right">',
-                        '<li><a href="#"><span class="glyphicon glyphicon-volume-up"></span></a></li>',
+                '<div class="collapse navbar-collapse" id="navbar-collapse">',
+                    '<ul class="nav navbar-nav">',
+                        '<li><a href="#create-match">Match maken</a></li>',
                     '</ul>',
                 '</div><!-- /.navbar-collapse -->',
             '</div><!-- /.container-fluid -->',
@@ -109,7 +108,7 @@ window.App.Templates = {
                 '<div class="modal-content">',
                     '<div class="modal-header">',
                         '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
-                        '<h4 class="modal-title">Kies ploegen</h4>',
+                        '<h4 class="modal-title">Kies de ploegen</h4>',
                     '</div>',
                     '<div class="modal-body">',
                         //...
