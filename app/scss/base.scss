@@ -27,7 +27,7 @@ $padding: 25px;
 .row {
     position: relative;
 }
-$score_dim: 100px;
+$score_dim: 120px;
 .scores {
     // Positioning
     position: absolute;
@@ -42,7 +42,7 @@ $score_dim: 100px;
 
     // Text
     line-height: $score_dim;
-    font-size: 200%;
+    font-size: 185%;
     text-align: center;
     vertical-align: middle;
     color: white;

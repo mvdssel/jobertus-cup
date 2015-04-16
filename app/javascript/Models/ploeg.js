@@ -12,10 +12,17 @@ App.Models.Ploeg = Backbone.Model.extend({
             }
         }
         this.set(attributes);
+        window.evtUtil.on('playing-sound', this.stopSound, this);
     },
     playSound: function() {
-        var html5_audio = new Audio(this.get("song"));
-        html5_audio.play();
+        window.evtUtil.trigger('playing-sound');
+        this.audio = new Audio(this.get("song"));
+        this.audio.play();
+    },
+    stopSound: function() {
+        if(this.audio instanceof Audio) {
+            this.audio.pause();
+        }
     },
     defaults: {
         image: 'images/logo.png',

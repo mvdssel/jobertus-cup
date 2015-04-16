@@ -39,7 +39,7 @@ template.fn.formatTimer = function (time) {
 };
 /* formatScores {{{2 */
 template.fn.formatScores = function (scores) {
-    return scores[0] + '—' + scores[1];
+    return scores[0] + ' — ' + scores[1];
 };
 /* timerClass {{{2 */
 template.fn.timerClass = function (interval) {
