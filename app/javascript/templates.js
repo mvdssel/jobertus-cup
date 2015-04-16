@@ -49,20 +49,25 @@ template.fn.timerClass = function (interval) {
 
 /* Templates {{{1 */
 window.App.Templates = {
+    StopSoundButton: [
+        '<button data-role="stop-sound" type="button" class="btn btn-default navbar-btn">',
+            '<span class="glyphicon glyphicon-volume-off"></span>',
+        '</button>',
+    ],
+    Timer: [
+    ],
     TimerValue: [
-        '<p class="navbar-text">',
+        '<p data-role="timer-value" class="navbar-text">',
             '{{ formatTimer(currentTime) }}',
         '</p>',
     ],
     TimerControls: [
-        '<div class="btn-group" role="group" aria-label="...">',
-            '<button data-role="reset" type="button" class="btn btn-default navbar-btn">',
-                '<span class="glyphicon glyphicon-step-backward"></span>',
-            '</button>',
-            '<button data-role="toggle" type="button" class="btn btn-default navbar-btn">',
-                '<span class="glyphicon {{ timerClass(interval) }}"></span>',
-            '</button>',
-        '</div>'
+        '<button data-role="reset" type="button" class="btn btn-default navbar-btn">',
+            '<span class="glyphicon glyphicon-step-backward"></span>',
+        '</button>',
+        '<button data-role="toggle" type="button" class="btn btn-default navbar-btn">',
+            '<span class="glyphicon {{ timerClass(interval) }}"></span>',
+        '</button>',
     ],
     Scores: [
         '<div class="scores">{{ formatScores(scores) }}</div>',
@@ -100,6 +105,9 @@ window.App.Templates = {
                     '<ul class="nav navbar-nav">',
                         '<li><a href="#create-match">Nieuwe match</a></li>',
                     '</ul>',
+                    '<div class="nav navbar-nav navbar-right">',
+                        '<div class="btn-toolbar" role="toolbar"></div>',
+                    '</div>',
                 '</div><!-- /.navbar-collapse -->',
             '</div><!-- /.container-fluid -->',
         '</nav>'
