@@ -126,11 +126,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
 
     // Task definition
-    grunt.registerTask('default', ['watch']);
     grunt.registerTask('all', [
         'bower_concat',
         'copy:app_assets', 'copy:app_images', 'copy:app_html', 'concat:app_js', 'sass', 'copy:app_fonts',
-        'copy:build_assets', 'copy:build_images', 'copy:build_html', 'concat:build_js', 'concat:build_css', 'copy:build_fonts'
+        // 'copy:build_assets', 'copy:build_images', 'copy:build_html', 'concat:build_js', 'concat:build_css', 'copy:build_fonts'
     ]);
+    grunt.registerTask('default', ['all', 'watch']);
 };
 
