@@ -7,54 +7,39 @@
     },
     "ploegen": [
         {
-            "name": "Real Jaak",
-            "song": "",
-            "image": ""
+            "name": "Real Jaak"
         },
         {
-            "name": "FC Barrylona",
-            "song": "",
-            "image": ""
+            "name": "FC Barrylona"
         },
         {
-            "name": "Verenigde Maïs",
-            "song": "",
-            "image": ""
+            "name": "Verenigde Maïs"
         },
         {
             "name": "Jin-Ploeg",
-            "song": "jins.mp3",
-            "image": ""
+            "song": "jins.mp3"
         },
         {
-            "name": "The Pathfinders",
-            "song": "",
-            "image": ""
+            "name": "The Pathfinders"
         },
         {
-            "name": "FC Willem enal",
-            "song": "",
-            "image": ""
+            "name": "FC Willem enal"
         },
         {
-            "name": "Matthi's Bitches",
-            "song": "",
-            "image": ""
+            "name": "Matthi's Bitches"
         },
         {
             "name": "Sneeuwbitchke en zijn dwergen",
-            "song": "sneeuwbitchke.mp3",
-            "image": ""
+            "song": "sneeuwbitchke.mp3"
         },
         {
             "name": "El Foco",
             "song": "el-foco.wav",
-            "image": ""
+            "image": "el-foco-logo.jpg"
         },
         {
             "name": "FC",
-            "song": "fc.mp3",
-            "image": ""
+            "song": "fc.mp3"
         }
     ]
 }

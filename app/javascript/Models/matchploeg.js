@@ -12,6 +12,7 @@ App.Models.MatchPloeg = Backbone.Model.extend({
         score: 0
     },
     fault: function() {
+        window.evtUtil.trigger('stop-sound');
         var newScore = Math.max(this.get('score') - 1, 0);
         this.set('score', newScore);
     },

@@ -1,23 +1,30 @@
 App.Models.Ploeg = Backbone.Model.extend({
-    initialize: function (attributes, options) {
+    initialize: function (model, options) {
         options = options || {};
 
-        // Adds a prefix to certain attributes
+        // Adds a prefix to certain model
         // eg. ${song} => assets/songs/${song}
         if(options.prefixes) {
-            for(var prefix in options.prefixes) {
-                if(options.prefixes.hasOwnProperty(prefix)) {
-                    attributes[prefix] = encodeURI(options.prefixes[prefix] + attributes[prefix]);
+            for(var attr in options.prefixes) {
+                if(options.prefixes.hasOwnProperty(attr) && model.hasOwnProperty(attr)) {
+                    model[attr] = encodeURI(options.prefixes[attr] + model[attr]);
                 }
             }
         }
-        this.set(attributes);
-        window.evtUtil.on('playing-sound', this.stopSound, this);
+        this.set(model);
+        window.evtUtil.on('stop-sound', this.stopSound, this);
     },
     playSound: function() {
-        window.evtUtil.trigger('playing-sound');
-        this.audio = new Audio(this.get("song"));
+        window.evtUtil.trigger('stop-sound');
+        if(!(this.audio instanceof Audio)) {
+            this.audio = new Audio(this.get('song'));
+        }
+        this.audio.currentTime = 0;
         this.audio.play();
+        if(this.audio.duration > (this.get('duration') / 1000)) {
+            console.log('Long song... trimming to ' + (this.get('duration') / 1000) + ' seconds.');
+            setTimeout(this.stopSound, 30000);
+        }
     },
     stopSound: function() {
         if(this.audio instanceof Audio) {
@@ -25,8 +32,9 @@ App.Models.Ploeg = Backbone.Model.extend({
         }
     },
     defaults: {
-        image: 'images/logo.png',
-        song: 'zot_liedje.mp3'
+        image: 'assets/images/logo.png',
+        song: 'assets/songs/default.mp3',
+        duration: 30000
     }
 });
 
