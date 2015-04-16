@@ -98,7 +98,7 @@ window.App.Templates = {
 
                 '<div class="collapse navbar-collapse" id="navbar-collapse">',
                     '<ul class="nav navbar-nav">',
-                        '<li><a href="#create-match">Match maken</a></li>',
+                        '<li><a href="#create-match">Nieuwe match</a></li>',
                     '</ul>',
                 '</div><!-- /.navbar-collapse -->',
             '</div><!-- /.container-fluid -->',
