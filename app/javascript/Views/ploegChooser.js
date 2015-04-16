@@ -2,17 +2,15 @@ App.Views.PloegChooser = Backbone.View.extend({
     initialize: function(options) {
 
     },
-    tagName: 'ul',
     template: App.Templates.PloegChooser,
     render: function() {
         // Render the template
-        var html = this.template();
-        this.$el.html(html);
+        this.$el.html(this.template());
 
         // Render all models in the collection
         this.collection.each(_.bind(function(ploeg) {
             var entry = new App.Views.PloegChooserEntry({ test: 'test', model: ploeg });
-            this.$el.append(entry.render().$el);
+            this.$('.row').append(entry.render().$el);
 
             entry.on('selected-ploeg', this.selectedPloeg, this);
         }, this));

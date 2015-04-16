@@ -9,12 +9,15 @@ App.Views.PloegenChooser = Backbone.View.extend({
         this.$el.html(this.template());
         this.$('.modal').modal('show');
         this.$('.modal').on('hide.bs.modal', function() {
-            history.go(-1);
+            App.Router.navigate('match', { trigger: true });
         });
 
         return this;
     },
     choosePloegen: function(callback, context) {
+        this.ploegChooser = new App.Views.PloegChooser({ collection: App.Settings.ploegen });
+        this.$(".modal-body").html(this.ploegChooser.render().$el);
+
         // Select left ploeg
         this.selectLeft(_.bind(this.selectedLeft, this));
         this.once('selected-left', _.bind(function() {
@@ -30,18 +33,14 @@ App.Views.PloegenChooser = Backbone.View.extend({
         }, this));
     },
     selectLeft: function(callback) {
-        var ploegChooser = new App.Views.PloegChooser({ collection: App.Settings.ploegen });
-        this.$(".modal-body").html(ploegChooser.render().$el);
-        ploegChooser.once('selected-ploeg', callback);
+        this.ploegChooser.once('selected-ploeg', callback);
     },
     selectedLeft: function(selectedModel) {
         this.left = selectedModel;
         this.trigger('selected-left');
     },
     selectRight: function(callback) {
-        var ploegChooser = new App.Views.PloegChooser({ collection: App.Settings.ploegen });
-        this.$(".modal-body").html(ploegChooser.render().$el);
-        ploegChooser.once('selected-ploeg', callback);
+        this.ploegChooser.once('selected-ploeg', callback);
     },
     selectedRight: function(selectedModel) {
         this.right = selectedModel;

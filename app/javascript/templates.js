@@ -17,11 +17,10 @@ var template = function (templateString) {
 
 /* Helper functions {{{1 */
 template.fn = {};
-
+/* twoDigitNumber {{{2 */
 function twoDigitNumber(number) {
     return ("0" + number).slice(-2);
 }
-
 /* formatTimer {{{2 */
 template.fn.formatTimer = function (time) {
     var days = Math.floor(time / (1000 * 60 * 60 * 24));
@@ -38,12 +37,15 @@ template.fn.formatTimer = function (time) {
 
     return twoDigitNumber(mins) + ':' + twoDigitNumber(seconds) + ':' + twoDigitNumber(time);
 };
+/* formatScores {{{2 */
 template.fn.formatScores = function (scores) {
     return scores[0] + '—' + scores[1];
 };
+/* timerClass {{{2 */
 template.fn.timerClass = function (interval) {
     return interval ? 'glyphicon-pause' : 'glyphicon-play';
 };
+/* 1}}} */
 
 /* Templates {{{1 */
 window.App.Templates = {
@@ -118,10 +120,12 @@ window.App.Templates = {
         '</div><!-- /.modal -->'
     ],
     PloegChooser: [
-
+        '<div class="container-fluid">',
+            '<div class="row"></div>',
+        '</div>',
     ],
     PloegChooserEntry: [
-        '<button>{{ name }}</button>'
+        '<button class="btn btn-default">{{ name }}</button>'
     ]
 };
 /* 1}}} */
