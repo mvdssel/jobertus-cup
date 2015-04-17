@@ -30,6 +30,7 @@ module.exports = function(grunt) {
             images: ['dist/images'],
             assets: ['dist/assets'],
         },
+        zipfile: '<%= pkg.name %>-<%= pkg.version %>.zip',
 
         // Task configuration
         bower_concat: {
@@ -115,7 +116,15 @@ module.exports = function(grunt) {
             build_fonts:  { expand: true, cwd: '<%= build.fonts %>/',  src: '**/*',     dest: '<%= dist.fonts %>/'   },
             build_images: { expand: true, cwd: '<%= build.images %>/', src: '**/*',     dest: '<%= dist.images %>/'  },
             build_assets: { expand: true, cwd: '<%= build.assets %>/', src: '**/*',     dest: '<%= dist.assets %>/'  },
-        }
+        },
+        zip: {
+            'dist': {
+                cwd: '<%= dist.base %>/',
+                src: '<%= dist.base %>/**/*',
+                dest: '<%= zipfile %>'
+            }
+        },
+        clean: ['<%= build.base %>', '<%= dist.base %>', '<%= zipfile %>']
     });
 
     // Plugin loading
@@ -125,11 +134,15 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-zip');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
     // Task definition
     grunt.registerTask('all', [
+        'clean',
         'bower_concat:app', 'copy:app_assets',   'copy:app_images',   'copy:app_html',   'concat:app_js',   'sass:app_style',   'copy:app_fonts',
-        'copy:build_bower', 'copy:build_assets', 'copy:build_images', 'copy:build_html', 'uglify:build_js', 'copy:build_style', 'copy:build_fonts'
+        'copy:build_bower', 'copy:build_assets', 'copy:build_images', 'copy:build_html', 'uglify:build_js', 'copy:build_style', 'copy:build_fonts',
+        'zip:'
     ]);
     grunt.registerTask('default', ['all', 'watch']);
 };
