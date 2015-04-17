@@ -30,7 +30,7 @@ module.exports = function(grunt) {
             images: ['dist/images'],
             assets: ['dist/assets'],
         },
-        zipfile: '<%= pkg.name %>-<%= pkg.version %>.zip',
+        zipfile: '<%= dist.base %>/jobertuscup.zip',
 
         // Task configuration
         bower_concat: {

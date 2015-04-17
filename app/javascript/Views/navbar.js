@@ -6,6 +6,7 @@ App.Views.Navbar = Backbone.View.extend({
     render: function() {
         // Render the navbar
         this.$el.html(this.template());
+        this.$('[data-toggle="tooltip"]').tooltip();
 
         // Render the timer
         var timer = new App.Models.Timer();
