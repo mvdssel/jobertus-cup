@@ -7,7 +7,26 @@
     },
     "ploegen": [
         {
+            "name": "Song Name? FC",
+            "song": "fc.mp3"
+        },
+        {
             "name": "Real Jaak"
+        },
+        {
+            "name": "Brack Attack utd."
+        },
+        {
+            "name": "FC Jin Jang",
+            "song": "jins.mp3"
+        },
+        {
+            "name": "The Pathfinders"
+        },
+        {
+            "name": "El Foco",
+            "song": "el-foco.wav",
+            "image": "el-foco-logo.jpg"
         },
         {
             "name": "FC Barrylona"
@@ -16,14 +35,7 @@
             "name": "Verenigde Maïs"
         },
         {
-            "name": "Jin-Ploeg",
-            "song": "jins.mp3"
-        },
-        {
-            "name": "The Pathfinders"
-        },
-        {
-            "name": "FC Willem enal"
+            "name": "FC Barrylona"
         },
         {
             "name": "Matthi's Bitches"
@@ -31,15 +43,6 @@
         {
             "name": "Sneeuwbitchke en zijn dwergen",
             "song": "sneeuwbitchke.mp3"
-        },
-        {
-            "name": "El Foco",
-            "song": "el-foco.wav",
-            "image": "el-foco-logo.jpg"
-        },
-        {
-            "name": "FC",
-            "song": "fc.mp3"
         }
     ]
 }
