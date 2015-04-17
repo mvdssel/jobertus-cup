@@ -124,7 +124,18 @@ module.exports = function(grunt) {
                 dest: '<%= zipfile %>'
             }
         },
-        clean: ['<%= build.base %>', '<%= dist.base %>', '<%= zipfile %>']
+        clean: ['<%= build.base %>', '<%= dist.base %>', '<%= zipfile %>'],
+        'ftp-deploy': {
+            dist: {
+                auth: {
+                    host: 'jobertus.be',
+                    port: 21,
+                    authKey: 'sn0823'
+                },
+                src: '<%= dist.base %>',
+                dest: 'public_html/cup15'
+            }
+        }
     });
 
     // Plugin loading
@@ -136,14 +147,16 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-zip');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-ftp-deploy');
 
     // Task definition
     grunt.registerTask('all', [
         'clean',
         'bower_concat:app', 'copy:app_assets',   'copy:app_images',   'copy:app_html',   'concat:app_js',   'sass:app_style',   'copy:app_fonts',
         'copy:build_bower', 'copy:build_assets', 'copy:build_images', 'copy:build_html', 'uglify:build_js', 'copy:build_style', 'copy:build_fonts',
-        'zip:'
+        'zip'
     ]);
+    grunt.registerTask('ftp', 'ftp-deploy');
     grunt.registerTask('default', ['all', 'watch']);
 };
 
