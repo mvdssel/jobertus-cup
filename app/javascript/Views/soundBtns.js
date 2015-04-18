@@ -1,6 +1,9 @@
 App.Views.SoundBtns = Backbone.View.extend({
+    initialize: function() {
+        window.evtUtil.on('stop-sound', this.stopSound, this);
+    },
     events: {
-        'click [data-role=stop-sound]': 'stopSound',
+        'click [data-role=stop-sound]': 'triggerStopSound',
         'click [data-role=uefa-sound]': 'uefaSound'
     },
     tagName: 'div',
@@ -17,8 +20,10 @@ App.Views.SoundBtns = Backbone.View.extend({
 
         return this;
     },
-    stopSound: function() {
+    triggerStopSound: function() {
         window.evtUtil.trigger('stop-sound');
+    },
+    stopSound: function() {
         if(this.audio instanceof Audio) {
             this.audio.pause();
         }
