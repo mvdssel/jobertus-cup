@@ -49,9 +49,12 @@ template.fn.timerClass = function (interval) {
 
 /* Templates {{{1 */
 window.App.Templates = {
-    StopSoundButton: [
-        '<button data-role="stop-sound" type="button" class="btn btn-default navbar-btn">',
+    SoundBtns: [
+        '<button data-role="stop-sound" type="button" class="btn btn-default navbar-btn" data-toggle="tooltip" data-placement="bottom" title="Mute all sounds" data-container="body">',
             '<span class="glyphicon glyphicon-volume-off"></span>',
+        '</button>',
+        '<button data-role="uefa-sound" type="button" class="btn btn-default navbar-btn" data-toggle="tooltip" data-placement="bottom" title="Play UEFA Champions League Anthem" data-container="body">',
+            '<span class="glyphicon glyphicon-music"></span>',
         '</button>',
     ],
     Timer: [
@@ -62,10 +65,10 @@ window.App.Templates = {
         '</p>',
     ],
     TimerControls: [
-        '<button data-role="reset" type="button" class="btn btn-default navbar-btn">',
+        '<button data-role="reset" type="button" class="btn btn-default navbar-btn" data-toggle="tooltip" data-placement="bottom" title="Reset timer" data-container="body">',
             '<span class="glyphicon glyphicon-step-backward"></span>',
         '</button>',
-        '<button data-role="toggle" type="button" class="btn btn-default navbar-btn">',
+        '<button data-role="toggle" type="button" class="btn btn-default navbar-btn" data-toggle="tooltip" data-placement="bottom" title="Start / Pause timer" data-container="body">',
             '<span class="glyphicon {{ timerClass(interval) }}"></span>',
         '</button>',
     ],
@@ -108,7 +111,7 @@ window.App.Templates = {
                     '<div class="nav navbar-nav navbar-right">',
                         '<div class="btn-toolbar" role="toolbar">',
                             '<div role="group" class="btn-group pull-right">',
-                                '<a href="jobertuscup.zip" class="btn btn-default navbar-btn" data-toggle="tooltip" data-placement="bottom" title="Download app">',
+                                '<a href="jobertuscup.zip" class="btn btn-default navbar-btn" data-toggle="tooltip" data-placement="bottom" title="Download app" data-container="body">',
                                     '<span class="glyphicon glyphicon-cloud-download"></span>',
                                 '</a>',
                             '</div>',

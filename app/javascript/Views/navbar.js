@@ -5,6 +5,7 @@ App.Views.Navbar = Backbone.View.extend({
     template: App.Templates.Navbar,
     render: function() {
         // Render the navbar
+        this.$('[data-toggle="tooltip"]').tooltip('hide');
         this.$el.html(this.template());
         this.$('[data-toggle="tooltip"]').tooltip();
 
@@ -14,11 +15,10 @@ App.Views.Navbar = Backbone.View.extend({
         var timerControls = new App.Views.TimerControls({ model: timer });
         this.$('.btn-toolbar').append(timerValue.render().$el);
         this.$('.btn-toolbar').append(timerControls.render().$el);
-        // this.$('.navbar-right').append(timerView.render().$el);
 
         // Render the stop-sound-button
-        var stopSoundButton = new App.Views.StopSoundButton();
-        this.$('.btn-toolbar').append(stopSoundButton.render().$el);
+        var soundBtns = new App.Views.SoundBtns();
+        this.$('.btn-toolbar').append(soundBtns.render().$el);
 
         return this;
     },

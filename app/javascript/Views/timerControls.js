@@ -14,8 +14,10 @@ App.Views.TimerControls = Backbone.View.extend({
     template: App.Templates.TimerControls,
     render: function() {
         // Render the template
+        this.$('[data-toggle="tooltip"]').tooltip('hide');
         var html = this.template(this.model.toJSON());
         this.$el.html(html);
+        this.$('[data-toggle="tooltip"]').tooltip();
 
         return this;
     },
