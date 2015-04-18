@@ -14,7 +14,7 @@ App.Views.SoundBtns = Backbone.View.extend({
     template: App.Templates.SoundBtns,
     render: function() {
         // Render the template
-        this.$('[data-toggle="tooltip"]').tooltip('hide');
+        this.$('[data-toggle="tooltip"]').tooltip('destroy');
         this.$el.html(this.template());
         this.$('[data-toggle="tooltip"]').tooltip();
 
@@ -29,6 +29,7 @@ App.Views.SoundBtns = Backbone.View.extend({
         }
     },
     uefaSound: function() {
+        this.triggerStopSound();
         if(!(this.audio instanceof Audio)) {
             this.audio = new Audio(encodeURI("assets/UEFA Champions League official theme song (Hymne) Stereo HD.mp3"));
             var interval = setInterval(_.bind(function() {

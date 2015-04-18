@@ -5,7 +5,7 @@ App.Views.Navbar = Backbone.View.extend({
     template: App.Templates.Navbar,
     render: function() {
         // Render the navbar
-        this.$('[data-toggle="tooltip"]').tooltip('hide');
+        this.$('[data-toggle="tooltip"]').tooltip('destroy');
         this.$el.html(this.template());
         this.$('[data-toggle="tooltip"]').tooltip();
 
