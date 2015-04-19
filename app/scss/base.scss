@@ -1,3 +1,19 @@
+@import "compass";
+
+html, body {
+    // http://www.noupe.com/design/80-stunning-background-patterns-for-your-websites.html
+    // background-image: url('../images/bg4.jpg');
+    // background-image: url('../images/bg1.jpg');
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.wrapper {
+    // @include background-image(linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)));
+    // width: 100%;
+    // height: 100%;
+}
+
 a {
     color: red;
 }
@@ -17,17 +33,20 @@ a {
 }
 
 $padding: 25px;
+$score_dim: 120px;
+#app .row {
+    min-height: 2*$padding + $score_dim;
+    position: relative;
+    background: rgba(255, 255, 255, 0.3);
+}
 .ploeg {
     padding: $padding;
 }
-.row div:last-child .ploeg {
+#app .row div:last-child .ploeg {
     text-align: right;
+    border-radius: 15px 0 0 15px;
 }
 
-.row {
-    position: relative;
-}
-$score_dim: 120px;
 .scores {
     // Positioning
     position: absolute;
