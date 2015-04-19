@@ -1,5 +1,19 @@
 Jobertus-Cup
 ============
+Installation
+------------
+    # Install node
+    brew install npm     # mac
+    apt-get install npm  # linux
+ 
+    # Install node components
+    npm install
+
+    # Install bower components
+    bower install
+
+    # Create project
+    grunt all
 
 TODO
 ----
