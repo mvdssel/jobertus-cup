@@ -67,8 +67,8 @@ module.exports = function(grunt) {
             app_style: {
                 options: {
                     style: 'compressed',    // nested, compact, compressed, expanded
-                    sourcemap: "inline",    // auto, file, inline, none
-                    compass: false          // = default
+                    sourcemap: 'inline',    // auto, file, inline, none
+                    compass: true           // = default
                 },
                 files: {
                     '<%= build.style %>/style.css': '<%= app.style %>/base.scss'
@@ -102,7 +102,7 @@ module.exports = function(grunt) {
             },
             sass: {
                 files: '<%= app.style %>/{,*/}*.{scss,sass}',
-                tasks: ['sass:app']
+                tasks: ['sass:app_style']
             }
         },
         copy: {
