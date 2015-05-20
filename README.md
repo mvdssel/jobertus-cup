@@ -25,3 +25,4 @@ TODO
  - knop om te wisselen van kant
  - twitter feed
  - soundboard
+ - ask for the player who scored
