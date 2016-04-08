@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         bower_concat: {
             app: {
                 dest: '<%= build.js %>/bower.js',
-                cssDest: '<%= build.style %>/bower.css',
+                // cssDest: '<%= build.style %>/bower.css',
                 dependencies: {
                     'bootstrap': 'jquery',
                     'underscore': 'jquery',
@@ -61,14 +61,21 @@ module.exports = function(grunt) {
                     '<%= app.js %>/app.js',
                 ],
                 dest: '<%= build.js %>/script.js'
+            },
+            build_style: {
+                src: [
+                    '<%= app.base %>/bower_components/bootstrap/dist/css/bootstrap.css',
+                    '<%= app.base %>/bower_components/bootstrap/dist/css/bootstrap-theme.css',
+                    '<%= build.style %>/style.css',
+                ],
+                dest: '<%= dist.style %>/style.css'
             }
         },
         sass: { // https://github.com/gruntjs/grunt-contrib-sass
             app_style: {
                 options: {
                     style: 'compressed',    // nested, compact, compressed, expanded
-                    sourcemap: 'inline',    // auto, file, inline, none
-                    compass: true           // = default
+                    sourcemap: 'inline'     // auto, file, inline, none
                 },
                 files: {
                     '<%= build.style %>/style.css': '<%= app.style %>/base.scss'
@@ -112,7 +119,7 @@ module.exports = function(grunt) {
             app_assets:   { expand: true, cwd: '<%= app.assets %>/',   src: '**/*',     dest: '<%= build.assets %>/' },
             build_bower:  { expand: true, cwd: '<%= build.js %>/',     src: 'bower.js', dest: '<%= dist.js %>/'      },
             build_html:   { expand: true, cwd: '<%= build.base %>/',   src: '*.html',   dest: '<%= dist.base %>/'    },
-            build_style:  { expand: true, cwd: '<%= build.style %>/',  src: '*.css',    dest: '<%= dist.style %>/'   },
+            // build_style:  { expand: true, cwd: '<%= build.style %>/',  src: '*.css',    dest: '<%= dist.style %>/'   },
             build_fonts:  { expand: true, cwd: '<%= build.fonts %>/',  src: '**/*',     dest: '<%= dist.fonts %>/'   },
             build_images: { expand: true, cwd: '<%= build.images %>/', src: '**/*',     dest: '<%= dist.images %>/'  },
             build_assets: { expand: true, cwd: '<%= build.assets %>/', src: '**/*',     dest: '<%= dist.assets %>/'  },
@@ -128,12 +135,12 @@ module.exports = function(grunt) {
         'ftp-deploy': {
             dist: {
                 auth: {
-                    host: 'jobertus.be',
-                    port: 21,
-                    authKey: 'sn0823'
+                    host: 'server83.jnet.be',
+                    // port: 21,
+                    authKey: 'key1'
                 },
                 src: '<%= dist.base %>',
-                dest: 'public_html/cup15'
+                dest: 'cup.jobertus.be/'
             }
         }
     });
@@ -153,7 +160,7 @@ module.exports = function(grunt) {
     grunt.registerTask('all', [
         'clean',
         'bower_concat:app', 'copy:app_assets',   'copy:app_images',   'copy:app_html',   'concat:app_js',   'sass:app_style',   'copy:app_fonts',
-        'copy:build_bower', 'copy:build_assets', 'copy:build_images', 'copy:build_html', 'uglify:build_js', 'copy:build_style', 'copy:build_fonts',
+        'copy:build_bower', 'copy:build_assets', 'copy:build_images', 'copy:build_html', 'uglify:build_js', 'concat:build_style', 'copy:build_fonts', //'copy:build_style'
         'zip'
     ]);
     grunt.registerTask('ftp', 'ftp-deploy');

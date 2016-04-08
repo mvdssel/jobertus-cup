@@ -7,24 +7,24 @@
     },
     "ploegen": [
         {
-            "name": "Song Name? FC",
-            "song": "fc.mp3"
+            "name": "Matthi's Chicks",
+            "song": "Gonna Make You Sweat (Everybody Dance Now).mp3"
         },
         {
             "name": "Real Jaak",
-            "song": "DJ-Khaled-All-I-Do-Is-Win-feat.-Ludacris-Rick-Ross-T-Pain-Snoop-Dogg-Victory-In-Stores-Now.mp3"
+            "song": "Zware Jongens vs DJ Daroon - Jodeljump.m4a"
         },
         {
-            "name": "Brack Attack utd.",
-            "song": "Kleine Jay & Cartes, M.O. & Brakko, Dret & Krulle - Kampioenen.wav"
+            "name": "FC Eddy Wally",
+            "song": "Eddy Wally Cherie.m4a"
         },
         {
-            "name": "FC Jin Jang",
-            "song": "jins.mp3"
+            "name": "Capabel FC",
+            "song": "fc.mp3"
         },
         {
-            "name": "The Pathfinders",
-            "song": "PATHFINDERS-Song.mp3"
+            "name": "Paris Sajint Germajin",
+            "song": "Feestteam Feat. DJ Jerome - Dikke T****en Kartoffelsalat (Strakke Blouse Mix).m4a"
         },
         {
             "name": "El Foco",
@@ -32,20 +32,8 @@
             "image": "el-foco-logo.jpg"
         },
         {
-            "name": "Verenigde Maïs",
-            "song": "audioclip-1428938589.wav"
-        },
-        {
             "name": "FC Barrylona",
-            "song": "Barrylona_score_coone.mp3"
-        },
-        {
-            "name": "Matthi's Bitches",
-            "song": "Matthi's Bitches - Goal (3).mp3"
-        },
-        {
-            "name": "Sneeuwbitchke en zijn dwergen",
-            "song": "sneeuwbitchke.mp3"
+            "song": "barrylona_2016.mp3"
         }
     ]
 }
